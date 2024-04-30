@@ -12,7 +12,8 @@
 
 .VERSION
     1.0  - Initial release
-    1.1  - Create targets for specific modules to avoid -all argument
+    1.1  - Changed unarchiving from tar to unzip
+		 - Create targets for specific modules to avoid -all argument
 			-t browsers: firefox, safari, chrome, cookies
 			-t users: users, utmpx, ssh, terminalstate, bash
 			-t execution: mru, coreanalytics, installhistory
@@ -44,8 +45,8 @@ T_SYSTEM="pslist lsof netstat netconfig systeminfo"
 # Environment
 DL_DIR="/Library/Application Support/Microsoft/Defender/response"
 DL_DIR_TMP="/Library/Application Support/Microsoft/Defender/response/TMP-IR"
-AUTOMACTC_ZIP="automactc-osx.tgz"
-AUTOMACTC_BIN="$DL_DIR_TMP/automactc/automactc.py"
+AUTOMACTC_ZIP="automactc-osx.zip"
+AUTOMACTC_BIN="$DL_DIR_TMP/automactc-master/automactc.py"
 HOSTNAME=`hostname`
 AUTOMACTC_ARGS="-p DFIR -nl -q -np"
 
@@ -85,7 +86,7 @@ function check_AutoMacTC()
 		echo ""
         echo "[*] AutoMacTC package has not been copied yet. Run putfile command first:"
 		echo ""
-        echo "	putfile automactc-osx.tgz"
+        echo "	putfile automactc-osx.zip"
         exit 1
     fi
 }
@@ -139,7 +140,7 @@ function pre_AutoMacTc()
     	mkdir "$DL_DIR_TMP"
 	fi
 
-	tar zxf "$DL_DIR/$AUTOMACTC_ZIP" -C "$DL_DIR_TMP"
+	unzip -qq -o "$DL_DIR/$AUTOMACTC_ZIP" -d "$DL_DIR_TMP"
 
 	if [[ -f "$AUTOMACTC_BIN" ]]; then
 		chmod +x "$AUTOMACTC_BIN"
@@ -172,7 +173,7 @@ function run_AutoMacTc()
 function post_AutoMacTc()
 {
 	echo -n "[*] Cleaning step... "
-	rm -rf "$DL_DIR/automactc-osx.tgz"
+	rm -rf "$DL_DIR/automactc-osx.zip"
 	rm -rf "$DL_DIR_TMP/automactc"
 	rm -rf "$TMP_IR_DIR/automactc"
 	echo "[DONE]"
@@ -193,4 +194,3 @@ post_AutoMacTc
 # Exit
 #
 exit 0
-
