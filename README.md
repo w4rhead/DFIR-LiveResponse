@@ -2,13 +2,13 @@
 
 
 
-## Summary
+## 🔖 Summary
 
 Bash scripts that have been created to run DFIR tools for MacOS through the Live-Response feature on MDE.
 
 
 
-## Procedure
+## 🚀 Procedure
 
 - Upload the tool to be executed in the investigated host to MDE Live-Response library.
 - Upload the Bash script wrapper to the MDE Live-Response library.
