@@ -1,12 +1,11 @@
 # DFIR-LiveResponse
-
-
+<br/>
 
 ## 🔖 Summary
 
 Bash scripts that have been created to run DFIR tools for MacOS through the Live-Response feature on MDE.
 
-
+<br/>
 
 ## 🚀 Procedure
 
@@ -15,9 +14,9 @@ Bash scripts that have been created to run DFIR tools for MacOS through the Live
 - Create a Live-Response session into the desired host to be investigated.
 - Copy the tool file from the MDE library to the host.
 - Run the bash script wrapper.
+<br/>
 
 > [!WARNING]
 > Sometimes the tool package would need to be modified before due to Microsoft limitations on file size or other factors.
-
-
+<br/>
     
